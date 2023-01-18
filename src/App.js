@@ -4,6 +4,7 @@ export default function App() {
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
   const [editId, setEditId] = useState(0);
+  const [toggle, setToggle] = useState(false);
   const clickHandler = (e) => {
     e.preventDefault();
     if (editId) {
@@ -18,44 +19,53 @@ export default function App() {
       return;
     }
 
-    setTodos([{ id: Date.now(), todo }, ...todos]);
+    setTodos([{ id: Date.now(), todo, status: false }, ...todos]);
     setTodo("");
   };
+  console.log(todos);
   const handleClick = (id) => {
     const boom = todos.filter((item) => item.id !== id);
 
     setTodos(boom);
   };
-
-  const handleEdit = (id) => {
-    const dhoom = todos.find((i) => i.id === id);
-    setTodo(dhoom.todo);
-    setEditId(dhoom.id);
+  const checker = (id) => {
+    
   };
+
+  // const handleEdit = (id) => {
+  //   const dhoom = todos.find((i) => i.id === id);
+  //   setTodo(dhoom.todo);
+  //   setEditId(dhoom.id);
+  // };
   return (
     <div className="App">
       <div className="container">
         <header className="header">
-          
           <h1>My Todo List</h1>
 
-        <form className="form" onSubmit={clickHandler}>
-          <input
-            value={todo}
-            placeHolder="Title..."
-            onChange={(e) => setTodo(e.target.value)}
-          />
+          <form className="form" onSubmit={clickHandler}>
+            <input
+              value={todo}
+              placeholder="Title..."
+              onChange={(e) => setTodo(e.target.value)}
+            />
 
-          <button className="btn" type="submit">{editId ? "EDIT" : "ADD"}</button>
-        </form>
+            <button className="btn" type="submit">
+              {editId ? "EDIT" : "ADD"}
+            </button>
+          </form>
         </header>
-        
+
         <ul>
           {todos.map((item) => (
             <li className="list-item" key={item.id}>
-              {item.todo}
-              <button onClick={() => handleEdit(item.id)}>Edit</button>
-              <button onClick={() => handleClick(item.id)}>x</button>
+              <div className="item" onClick={checker(item.id)}>
+                {item.todo}
+              </div>
+              {/* <button onClick={() => handleEdit(item.id)}>Edit</button> */}
+              <button className="close" onClick={() => handleClick(item.id)}>
+                x
+              </button>
             </li>
           ))}
         </ul>

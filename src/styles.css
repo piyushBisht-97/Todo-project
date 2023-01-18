@@ -66,3 +66,40 @@ ul li:nth-child(odd) {
 ul li:hover {
   background: #ddd;
 }
+.list-item {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+  align-items: center;
+}
+.close {
+  border: none;
+  padding: 1rem;
+}
+.close:hover {
+  background-color: #f44336;
+}
+
+/* ul li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+/* Add a "checked" mark when clicked on */
+/* ul li.checked::before {
+  content: "";
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+} */ */
+.item {
+  text-decoration: line-through;
+}
