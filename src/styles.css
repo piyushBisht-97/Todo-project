@@ -99,7 +99,11 @@ ul li:hover {
   transform: rotate(45deg);
   height: 15px;
   width: 7px;
-} */ */
-.item {
+} */
+.check {
   text-decoration: line-through;
+}
+
+.uncheck {
+  text-decoration: none;
 }

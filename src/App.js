@@ -28,8 +28,13 @@ export default function App() {
 
     setTodos(boom);
   };
+  // console.log(todos.map((item) => item.status));
   const checker = (id) => {
-    
+    let mapped = todos.map((item) => {
+      return item.id === id ? { ...item, status: !item.status } : { ...item };
+    });
+    setTodos(mapped);
+    console.log(mapped);
   };
 
   // const handleEdit = (id) => {
@@ -59,7 +64,10 @@ export default function App() {
         <ul>
           {todos.map((item) => (
             <li className="list-item" key={item.id}>
-              <div className="item" onClick={checker(item.id)}>
+              <div
+                className={item.status ? "check" : "uncheck"}
+                onClick={() => checker(item.id)}
+              >
                 {item.todo}
               </div>
               {/* <button onClick={() => handleEdit(item.id)}>Edit</button> */}
