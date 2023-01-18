@@ -4,7 +4,7 @@ export default function App() {
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
   const [editId, setEditId] = useState(0);
-  const [toggle, setToggle] = useState(false);
+
   const clickHandler = (e) => {
     e.preventDefault();
     if (editId) {
@@ -52,6 +52,7 @@ export default function App() {
             <input
               value={todo}
               placeholder="Title..."
+              required
               onChange={(e) => setTodo(e.target.value)}
             />
 
