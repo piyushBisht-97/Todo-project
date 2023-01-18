@@ -52,7 +52,7 @@ export default function App() {
             <input
               value={todo}
               placeholder="Title..."
-              required
+              required="true"
               onChange={(e) => setTodo(e.target.value)}
             />
 
